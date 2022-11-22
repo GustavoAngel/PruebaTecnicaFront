@@ -28,7 +28,8 @@
 <script>    
 
     import employee from '../model/employeeTurn'
- 
+    import propsServer from '@/model/propsServer';
+    
 
     export default {
         data(){
@@ -76,7 +77,7 @@
                     
                     const thisRef=this;
                     if (!this.recordLocal.idRecord) {
-                        fetch("http://localhost:3000/apimain/",{
+                        fetch(propsServer.urlApi+"apimain",{
                         method:'POST',
                         body: JSON.stringify([this.recordLocal]),
                         headers:{

@@ -29,8 +29,7 @@
     </div>
 </template>
 <script>
-
-                
+import propsServer from '@/model/propsServer';
 
  export default {
         data(){
@@ -44,13 +43,13 @@
         methods:{
             getTurns(){
                 // eslint-disable-next-line
-                fetch("http://localhost:3000/apimain/").then(res=> res.json()).then(data=> {this.turnsPreview=data; });;
+                fetch(propsServer.urlApi+"apimain/").then(res=> res.json()).then(data=> {this.turnsPreview=data; });;
             },
             deleteItem(item,i){
                 //Confirm with the user action
                 if (confirm('¿Seguro que deseas eliminar el registro?')) {
                     
-                    fetch("http://localhost:3000/apimain/"+item,{
+                    fetch(propsServer.urlApi+"apimain/"+item,{
                     method:'DELETE',
                     body: JSON.stringify([this.recordLocal]),
                     headers:{

@@ -9,7 +9,7 @@
           </a>
           <ul class="navbar-nav">
               <li class="nav-item ">
-                <a class="nav-link navItem" v-on:click="uploadNav">Cargar Archivo</a>
+                <a class="nav-link navItem"  v-on:click="uploadNav">Cargar Archivo</a>
               </li>
               <li class="nav-item ">
                 <a class="nav-link navItem"  v-on:click="registroManualNav">Registro Manual</a>
@@ -19,8 +19,8 @@
     </div>
     </header>
     <div>
-      <turnsComponent ref="TurnsComponentRef" id="TurnsComponent" ></turnsComponent>
-      <FileUpload id="FileUploadComponent"  ></FileUpload>
+      <turnsComponent ref="TurnsComponentRef" v-if="!bandera" id="TurnsComponent" ></turnsComponent>
+      <FileUpload id="FileUploadComponent" v-if="bandera"  ></FileUpload>
       
     </div>
   </div>
@@ -36,15 +36,18 @@ import turnsComponent from './components/turnsComponent.vue'
 
 
 export default {
+  data(){
+    return {
+      bandera:true
+    };
+  },
   name: 'App',
   methods:{
     uploadNav(){
-      document.getElementById('FileUploadComponent').style='';
-      document.getElementById('TurnsComponent').style='display: none;';
+      this.bandera=!this.bandera;
     },
     registroManualNav(){
-      document.getElementById('FileUploadComponent').style='display: none;';
-      document.getElementById('TurnsComponent').style='';
+      this.bandera=!this.bandera;
     }
   },
   components: {

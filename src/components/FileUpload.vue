@@ -32,7 +32,7 @@
 
 import readXlsxFile from 'read-excel-file';
 import employee from '../model/employeeTurn';
-
+import propsServer from '@/model/propsServer';
 
 export default {
     data() {
@@ -55,7 +55,7 @@ export default {
         },
         sendInfo() {
             const thisRef=this;
-            fetch("http://localhost:3000/apimain/", {
+            fetch(propsServer.urlApi+"apimain", {
                 method: "POST",
                 body: JSON.stringify(this.turnsPreview),
                 headers: {

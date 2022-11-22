@@ -18,8 +18,6 @@ import TurnDetaill from './turnDetaill.vue';
 import TurnList from './turnsList.vue';
 import employee from '../model/employeeTurn';
 
-
-
 export default {
     data() {
         return {

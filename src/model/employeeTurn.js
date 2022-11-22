@@ -7,3 +7,4 @@ export default class employee {
         this.PunchOut=PunchOut;
      }
 }
+
