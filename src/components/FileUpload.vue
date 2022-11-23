@@ -86,7 +86,7 @@ export default {
                                                 }); 
             }).catch(function () {
                    //Show status file in front user
-                   thisRef.$toast.warning(`Server not available, please try again later.`,{
+                   thisRef.$toast.error(`Server not available, please try again later.`,{
                                                 position:"top-right",
                                                 duration:1750,
                                                 max:1
