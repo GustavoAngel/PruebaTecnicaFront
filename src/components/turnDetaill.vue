@@ -2,10 +2,10 @@
        <div class="row" style="margin: 20px;">
 
                 <label for="userIdInput"  >User id:</label>
-                <input type="text" id="userIdInput" class="form-control" placeholder="Write User Id" v-model="recordLocal.userId"  />                
+                <input type="text" id="userIdInput" class="form-control" placeholder="Enter User Id" v-model="recordLocal.userId"  />                
 
                 <label for="UserNameInput" >User Name:</label>
-                <input type="text" id="UserNameInput" class="form-control" placeholder="Write User Name" v-model="recordLocal.userNme"/>
+                <input type="text" id="UserNameInput" class="form-control" placeholder="Enter User Name" v-model="recordLocal.userNme"/>
 
                 <label>Date:</label> 
                 <input type="date" class="form-control" v-model="recordLocal.date"/>  
