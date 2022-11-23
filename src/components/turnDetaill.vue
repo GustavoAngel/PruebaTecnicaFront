@@ -85,7 +85,12 @@
                             'Content-type':'application/json'
                         }
                         }).then(function () {
-                            thisRef.$emit('newTurnAdded');    
+                            thisRef.$emit('newTurnAdded'); 
+                            thisRef.$toast.info(`Record updated!!!`,{
+                                                position:"top-right",
+                                                duration:1750,
+                                                max:1
+                                                });   
                             thisRef.recordLocal=new employee();                
                         });
                     }
