@@ -34,8 +34,7 @@
 
     import employee from '../model/employeeTurn'
     import propsServer from '@/model/propsServer';
-    
-
+    //Export default VUE structure for this app
     export default {
         data(){
             return {
