@@ -44,28 +44,35 @@
         },methods:{
             checkForm()
             {
+                //Array to save errors validation user. reset
                 this.errors=[];
+                //Validate userId
                 if (this.recordLocal.userId===undefined || this.recordLocal.userId.trim()==='' ) {
                     this.errors.push('User id Required');
                 }
+                //Validate userNme
                 if (this.recordLocal.userNme===undefined || this.recordLocal.userNme.trim()==='' ) {
                     this.errors.push('User name Required');
                 }
+                //Validate date
                 if (this.recordLocal.date===undefined || this.recordLocal.PunchOut.trim()==='' ) {
                     this.errors.push('date of turn Required');
                 }
+                //Validate PunchIn
                 if (this.recordLocal.PunchIn===undefined || this.recordLocal.PunchOut.trim()==='' ) {
                     this.errors.push('Punch in Required');
                 }
+                //Validate PunchOut
                 if (this.recordLocal.PunchOut===undefined || this.recordLocal.PunchOut.trim()==='' ) {
                     this.errors.push('Punch out Required');
                 }
-
+                //Message for user
                 let userMessage=''
                 this.errors.forEach(element => {
                     userMessage +='\n-'+element;
                 });
                 const pass = this.errors.length===0;
+                
                 if (!pass) {
                     alert('Please check the followind data'+userMessage);    
                 }

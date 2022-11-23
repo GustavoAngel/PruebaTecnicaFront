@@ -29,7 +29,7 @@
 </template>
 
 <script>
-
+//Imports modules for this component read y send xlsx to server 
 import readXlsxFile from 'read-excel-file';
 import employee from '../model/employeeTurn';
 import propsServer from '@/model/propsServer';
@@ -43,18 +43,33 @@ export default {
     },
     methods: {
         newUpload(e) {
+            //Reference to object DOM 
             const input = e.target;
-            const s = this;
+            //Reference for this scope, to be able to access it in another thread
+            const thisRef = this;
+            //Read xlsx async
             readXlsxFile(input.files[0]).then(function (data) {
-                s.turnsPreview = [];
+                //Resert array
+                thisRef.turnsPreview = [];
+                //read xlxs and parse object local js
                 for (let i = 1; i < data.length; i++) {
+                    //Created item 
                     let element = new employee(data[i][0], data[i][1], data[i][2], data[i][3], data[i][4]);
-                    s.turnsPreview.push(element);
+                    //add this item to array 
+                    thisRef.turnsPreview.push(element);
                 }
+                //Show status file in front user
+                thisRef.$toast.info(`File upload preview`,{
+                                                position:"top-right",
+                                                duration:1750,
+                                                max:1
+                                                }); 
             });
         },
         sendInfo() {
+            //Reference for this scope, to be able to access it in another thread
             const thisRef=this;
+            //Request api 
             fetch(propsServer.urlApi+"apimain", {
                 method: "POST",
                 body: JSON.stringify(this.turnsPreview),
@@ -63,20 +78,20 @@ export default {
                     "Content-type": "application/json"
                 }
             }).then(function () {
+                //Show status file in front user
                 thisRef.$toast.success(`File sent successfully!!!`,{
                                                 position:"top-right",
                                                 duration:1750,
                                                 max:1
                                                 }); 
             });
-            
             this.turnsPreview = [];
             document.getElementById('file-input').value='';
         }
     },
     computed: {
         itemsComputados() {
-            let items= [];
+                let items= [];
                 if (this.turnsPreview.length>0) {
                     items= this.turnsPreview.map(function (i) {
                     i.dateFormat= i.date.toLocaleDateString();
