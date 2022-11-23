@@ -4,8 +4,7 @@
     <div >
         <nav class="navbar navbar-light bg-light">
           <a class="navbar-brand" >
-            <img src="./assets/logo.png" width="150" height="30" class="d-inline-block align-top" alt="">
-            Prueba tecnica
+            <img src="./assets/logo.png" width="150" height="30" class="d-inline-block align-top" alt="logo">
           </a>
           <ul class="navbar-nav">
               <li class="nav-item ">
