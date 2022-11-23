@@ -1,15 +1,15 @@
 <template>
        <div class="row" style="margin: 20px;">
                 User id:
-                <input type="text" v-model="recordLocal.userId"  />                
+                <input type="text" class="form-control" v-model="recordLocal.userId"  />                
                 User Name:
-                <input type="text" v-model="recordLocal.userNme"/>
+                <input type="text" class="form-control" v-model="recordLocal.userNme"/>
                 Date:
-                <input type="date" v-model="recordLocal.date"/>  
+                <input type="date" class="form-control" v-model="recordLocal.date"/>  
                 Punch in:
-                <input type="time" id="inTime" v-model="recordLocal.PunchIn"/> 
+                <input type="time" class="form-control" id="inTime" v-model="recordLocal.PunchIn"/> 
                 Punch out:
-                <input type="time" v-model="recordLocal.PunchOut"/> 
+                <input type="time" class="form-control" v-model="recordLocal.PunchOut"/> 
                 
                 <button class="btn btn-danger float-end" v-on:click="saveRecord" >
                     <div v-if="!recordLocal.idRecord">        
