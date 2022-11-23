@@ -84,7 +84,20 @@ export default {
                                                 duration:1750,
                                                 max:1
                                                 }); 
+            }).catch(function () {
+                   //Show status file in front user
+                   thisRef.$toast.warning(`Server not available, please try again later.`,{
+                                                position:"top-right",
+                                                duration:1750,
+                                                max:1
+                                                }); 
             });
+               //Show status file in front user
+               thisRef.$toast.warning(`Server not available, please try again later.`,{
+                                                position:"top-right",
+                                                duration:1750,
+                                                max:1
+                                                }); 
             //Reset arrray
             this.turnsPreview = [];
             //Reset control input file in  screen 

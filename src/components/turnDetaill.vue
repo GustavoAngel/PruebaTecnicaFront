@@ -103,7 +103,7 @@
                     }
                     else
                     {
-                        fetch("http://localhost:3000/apimain/"+this.recordLocal.idRecord,{
+                        fetch(propsServer.urlApi+"apimain/"+this.recordLocal.idRecord,{
                         method:'PUT',
                         body: JSON.stringify([this.recordLocal]),
                         headers:{
