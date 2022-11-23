@@ -97,27 +97,33 @@ export default {
                 if (this.turnsPreview.length>0) {
                     //Process data and formated for display
                     items= this.turnsPreview.map(function (i) {
+                    //Format yyyy-MM-dd
                     i.dateFormat= i.date.toLocaleDateString('en-CA');
+                    // Aux variable for formated data
                     let timeAuxIn=new Date(i.PunchIn).toLocaleTimeString();
+                    //Validate for correct format 
                     if (timeAuxIn.split(':')[0].length===1) {
                         timeAuxIn= 0+timeAuxIn;
                     }
-
+                    // Aux variable for formated data
                     let timeAuxOut=new Date(i.PunchOut).toLocaleTimeString();
+                    //Validate for correct format 
                     if (timeAuxOut.split(':')[0].length===1) {
                         timeAuxOut= 0+timeAuxOut;
                     }
+                    //New format time
                     i.PunchInFormat = timeAuxIn;
+                    //New format time
                     i.PunchOutFormat = timeAuxOut;
+                    //Retunr new item with format friendly
                     return i;
                 });
                 }
+                //Return new Items with format friendly
                 return items;
         }
-    },
-    components: {  }
+    }
 }
-
 </script>
 
 <style scoped>
