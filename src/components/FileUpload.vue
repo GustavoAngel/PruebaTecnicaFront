@@ -91,10 +91,13 @@ export default {
     },
     computed: {
         itemsComputados() {
+                //Array  for items display in screen
                 let items= [];
+                //Validate what turnsPreview have minimun 1 item
                 if (this.turnsPreview.length>0) {
+                    //Process data and formated for display
                     items= this.turnsPreview.map(function (i) {
-                    i.dateFormat= i.date.toLocaleDateString();
+                    i.dateFormat= i.date.toLocaleDateString('en-CA');
                     let timeAuxIn=new Date(i.PunchIn).toLocaleTimeString();
                     if (timeAuxIn.split(':')[0].length===1) {
                         timeAuxIn= 0+timeAuxIn;
