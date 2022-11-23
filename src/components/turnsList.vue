@@ -1,7 +1,5 @@
 <template>
     <div >
-        <h4 class="text-center">Registros</h4>
-        
         <table id="tbl-data" class="table table-striped"> 
             <thead>
                 <tr>
