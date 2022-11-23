@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-            <!-- <label for="file-input" class="btn btn-danger buttonLocal float-right"  >{{textSearch}}</label> -->
+            
             <input type="file" accept=".xlsx"  class="form-control" v-on:change="newUpload" id="file-input"/>
             <button v-on:click="sendInfo" v-if="turnsPreview.length>0" class="btn btn-danger buttonLocal float-right"> Send info</button>
         
@@ -85,7 +85,9 @@ export default {
                                                 max:1
                                                 }); 
             });
+            //Reset arrray
             this.turnsPreview = [];
+            //Reset control input file in  screen 
             document.getElementById('file-input').value='';
         }
     },
@@ -130,7 +132,12 @@ export default {
     .buttonLocal{
         height: 35px;
         width: 150px;
-        margin: 15px;
+        margin: 5px 20px;
     }
+
+    #file-input{
+        margin: 5px 20px;
+    }
+    
 
 </style>
