@@ -71,7 +71,9 @@ export default {
             const thisRef=this;
             //Request api 
             fetch(propsServer.urlApi+"apimain", {
+                //Type of request
                 method: "POST",
+                //Content of request 
                 body: JSON.stringify(this.turnsPreview),
                 headers: {
                     "Accept": "application/json",
