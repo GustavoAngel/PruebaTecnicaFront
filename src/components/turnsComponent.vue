@@ -1,6 +1,6 @@
 <template>
     <div class="jumbtron">
-    <h1 class="display-4 text-center">Checador de turnos</h1>
+    <h2 class="display-4 text-center">Technical test 2</h2>
     <hr>
     <div class="row">
         <div class="col-md-5">
