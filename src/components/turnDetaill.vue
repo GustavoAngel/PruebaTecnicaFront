@@ -43,9 +43,7 @@
                 errors:[]
             }
         },
-        created(){
-            
-        },methods:{
+        methods:{
             checkForm()
             {
                 //Array to save errors validation user. reset
