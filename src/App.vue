@@ -1,29 +1,17 @@
 <template>
   <div>
-    <header class="full navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
-    <div >
-        <nav class="navbar navbar-light bg-light">
-          <a class="navbar-brand" >
-            <img src="./assets/logo.png" width="150" height="30" class="d-inline-block align-top" alt="logo">
-          </a>
-          <ul class="navbar-nav">
-              <li class="nav-item ">
-                <a class="nav-link navItem"  v-on:click="uploadNav">File upload</a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link navItem"  v-on:click="registroManualNav">Register</a>
-              </li>
-            </ul>
-        </nav>
-    </div>
-    </header>
-    <div>
+      <nav>
+        <a class="navbar-brand" >
+          <img src="./assets/logo.png" width="150" height="30" class="d-inline-block align-top" alt="logo">
+        </a>
+              <a class="nav-link navItem"  v-on:click="uploadNav">File upload</a>
+              <a class="nav-link navItem"  v-on:click="registroManualNav">Register</a>
+      </nav>
+  <div>
       <turnsComponent ref="TurnsComponentRef" v-if="bandera" id="TurnsComponent" ></turnsComponent>
       <FileUpload id="FileUploadComponent" v-if="!bandera"  ></FileUpload>
-      
     </div>
   </div>
-  
 </template>
 
 
@@ -64,6 +52,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+nav{
+  display: flex;
+  width: 100%;
+  height: 60px;
+  align-items: center;
 }
 .navItem{
   cursor: pointer;
