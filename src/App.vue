@@ -4,8 +4,8 @@
         <a class="navbar-brand" >
           <img src="./assets/logo.png" width="150" height="30" class="d-inline-block align-top" alt="logo">
         </a>
-              <a class="nav-link navItem"  v-on:click="uploadNav">File upload</a>
-              <a class="nav-link navItem"  v-on:click="registroManualNav">Register</a>
+        <a class="nav-link navItem navitemMa"  v-on:click="uploadNav">File upload</a>
+        <a class="nav-link navItem navitemMa"  v-on:click="registroManualNav">Register</a>
       </nav>
   <div>
       <turnsComponent ref="TurnsComponentRef" v-if="bandera" id="TurnsComponent" ></turnsComponent>
@@ -61,5 +61,8 @@ nav{
 }
 .navItem{
   cursor: pointer;
+}
+.navitemMa{
+  margin-left: 10px;
 }
 </style>
