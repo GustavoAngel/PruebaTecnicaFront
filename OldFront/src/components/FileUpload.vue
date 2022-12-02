@@ -1,9 +1,7 @@
 <template>
     <div class="row">
-            
-            <input type="file" accept=".xlsx"  class="form-control" v-on:change="newUpload" id="file-input"/>
-            <button v-on:click="sendInfo" v-if="turnsPreview.length>0" class="btn btn-danger buttonLocal float-right"> Send info</button>
-        
+        <input type="file" accept=".xlsx"  class="form-control" v-on:change="newUpload" id="file-input"/>
+        <button v-on:click="sendInfo" v-if="turnsPreview.length>0" class="btn btn-danger buttonLocal float-right"> Send info</button>
          <h5>Preview</h5>
          <table id="tbl-data" class="table table-striped"> 
             <thead>

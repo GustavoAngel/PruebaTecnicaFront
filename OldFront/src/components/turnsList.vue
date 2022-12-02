@@ -41,12 +41,12 @@ import propsServer from '@/model/propsServer';
         methods:{
             getTurns(){
                 // eslint-disable-next-line
-                fetch(propsServer.urlApi+"apimain/").then(res=> res.json()).then(data=> {this.turnsPreview=data; });;
+                fetch(`${propsServer.urlApi}apimain/`).then(res=> res.json()).then(data=> {this.turnsPreview=data; });;
             },
             deleteItem(item,i){
                 //Confirm with the user action
                 if (confirm('¿Seguro que deseas eliminar el registro?')) {
-                    
+                    console.log(item);
                     fetch(propsServer.urlApi+"apimain/"+item,{
                     method:'DELETE',
                     body: JSON.stringify([this.recordLocal]),

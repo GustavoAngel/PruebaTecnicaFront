@@ -1,21 +1,23 @@
 <template>
        <div class="row" style="margin: 20px;">
 
-                <label for="userIdInput"  >User id:</label>
-                <input type="text" id="userIdInput" class="form-control" placeholder="Enter User Id" v-model="recordLocal.userId"  />                
+                <label for="userIdInput"  >User id:
+                    <input type="text" id="userIdInput" class="form-control" placeholder="Enter User Id" v-model="recordLocal.userId"  />                
+                </label>
+                <label for="UserNameInput" >User Name:
+                    <input type="text" id="UserNameInput" class="form-control" placeholder="Enter User Name" v-model="recordLocal.userNme"/>
+                </label>
 
-                <label for="UserNameInput" >User Name:</label>
-                <input type="text" id="UserNameInput" class="form-control" placeholder="Enter User Name" v-model="recordLocal.userNme"/>
+                <label>Date:
+                    <input type="date" class="form-control" v-model="recordLocal.date"/>  
+                </label> 
+                <label>Punch in:
+                    <input type="time" class="form-control" id="inTime" v-model="recordLocal.PunchIn"/> 
+                </label> 
 
-                <label>Date:</label> 
-                <input type="date" class="form-control" v-model="recordLocal.date"/>  
-
-                <label>Punch in:</label> 
-                <input type="time" class="form-control" id="inTime" v-model="recordLocal.PunchIn"/> 
-
-                <label >Punch out:</label> 
-                <input type="time" class="form-control" v-model="recordLocal.PunchOut"/> 
-
+                <label >Punch out:
+                    <input type="time" class="form-control" v-model="recordLocal.PunchOut"/>
+                </label> 
                 <button class="btn btn-danger float-end" v-on:click="saveRecord" >
                     <div v-if="!recordLocal.idRecord">        
                         Save
@@ -173,5 +175,6 @@
     }
     label{
         text-align: left;
+        margin-bottom: 12px;
     }
 </style>
