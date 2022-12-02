@@ -3,7 +3,7 @@ export default class employee {
 
     userNme:string;
 
-    date:Date;
+    date:any;
 
     PunchIn:Date;
 

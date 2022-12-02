@@ -17,8 +17,8 @@
                 <p>{{formaTime(item.PunchOut)}}</p>
             </div>
             <div class="container-buttons">
-                <button class="button-detail edit-button" v-on:click="deleteItem(item._id,i)"
-                v-on:keydown="deleteItem(item,i)">Editar</button>
+                <button class="button-detail edit-button" v-on:click="editItem(item._id,i)"
+                v-on:keydown="editItem(item,i)">Editar</button>
                 <button class="button-detail delete-button" v-on:click="deleteItem(item._id,i)"
                 v-on:keydown="deleteItem(item,i)">delete</button>
             </div>
@@ -147,6 +147,9 @@ export default defineComponent({
         });
         this.fechas.splice(i, 1);
       }
+    },
+    editItem(item: any, i: number) {
+      this.$router.push({ path: 'Add', query: { id: item } });
     },
   },
 });

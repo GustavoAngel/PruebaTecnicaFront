@@ -13,7 +13,7 @@
                     class="input-control">
                 </label>
                 <label for="userDate" class="label-input">Fecha:
-                    <input type="date" id="userDate" v-model="registro.date"
+                    <input type="date" id="userDate"  v-model="registro.date"
                     class="input-control">
                 </label>
                 <label for="userTimeIn" class="label-input">Hora de entrada:
@@ -24,7 +24,9 @@
                     <input type="time" id="userTimeOut" v-model="registro.PunchOut"
                     class="input-control">
                 </label>
-                <button class="primary-button" v-on:click="saveRecord">Registrar</button>
+                <button class="primary-button"
+                v-on:click="saveRecord" v-if="!isEdit" >Registrar</button>
+                <button class="primary-button" v-if="isEdit" >Guardar cambios</button>
             </div>
         </div>
     </div>
@@ -40,7 +42,11 @@ export default defineComponent({
   data() {
     return {
       registro: new Employee(),
+      isEdit: false,
     };
+  },
+  created() {
+    this.isEditComponent(this.$route.query.id);
   },
   methods: {
     saveRecord() {
@@ -60,12 +66,36 @@ export default defineComponent({
         alert('Error en el server');
       });
     },
+    isEditComponent(id:any) {
+      if (id !== null && id !== undefined) {
+        this.isEdit = true;
+        fetch(`${UtileriasCls.myAppUrl()}apimain/GetTurno/${id}`, {
+          mode: 'cors',
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+        }).then((res) => res.json()).then((data) => {
+          const demo = data as Employee;
+          //    demo.date = (demo.date as Date).toString().substring(0, 10);
+          //    console.log(demo.date);
+          this.registro = demo;
+        }).catch((res) => {
+          window.alert('Servidor no disponible');
+        });
+      }
+    },
+  },
+  components: {
+
   },
 });
 </script>
 <style>
 --root{
     --lg: 1rem;
+}
+.inactive{
+    display: none;
 }
 h1{
     color: black;
