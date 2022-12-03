@@ -26,9 +26,9 @@
                 <tr class="body-tr" v-for="(item,i) in turnsPreview" v-bind:key="i">
                 <td>{{item.userId}}</td>
                 <td>{{item.userNme}}</td>
-                <td>{{item.date.toLocaleDateString()}}</td>
-                <td>{{item.PunchIn.toTimeString().substring(0,8)}}</td>
-                <td>{{item.PunchOut.toTimeString().substring(0,8)}}</td>
+                <td>{{item.date}}</td>
+                <td>{{item.PunchIn}}</td>
+                <td>{{item.PunchOut}}</td>
                 </tr>
             </tbody>
             </table>
@@ -51,7 +51,6 @@ export default defineComponent({
   data() {
     return {
       turnsPreview: [] as any,
-      mensaje: 'hola msj',
     };
   },
   methods: {
@@ -89,6 +88,7 @@ export default defineComponent({
       });
     },
     sendInfo() {
+      console.log(this.turnsPreview);
       //  Request api
       fetch(`${UtileriasCls.myAppUrl()}apimain`, {
         //  Type of request

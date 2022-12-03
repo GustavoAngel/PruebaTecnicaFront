@@ -118,6 +118,7 @@ export default defineComponent({
       }).then((res) => res.json())
         .then((data) => {
           this.fechas = data as employee[];
+          console.log(data);
           this.userNme = this.fechas[0].userNme;
         }).catch((res) => {
           console.log(res);
@@ -125,11 +126,11 @@ export default defineComponent({
     },
     formatDate(date:Date) {
       const dat = new Date(date);
-      return dat.toLocaleDateString();
+      return dat.toISOString().split('T')[0];
     },
     formaTime(date:Date) {
       const dat = new Date(date);
-      const time = dat.toLocaleTimeString();
+      const time = dat.toISOString().split('T')[1].substring(0, 5);
       const result = time.split(':')[0].length < 2 ? `0${time}` : time;
       return result;
     },

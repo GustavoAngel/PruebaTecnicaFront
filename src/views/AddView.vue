@@ -26,7 +26,8 @@
                 </label>
                 <button class="primary-button"
                 v-on:click="saveRecord" v-if="!isEdit" >Registrar</button>
-                <button class="primary-button" v-if="isEdit" >Guardar cambios</button>
+                <button class="primary-button" v-if="isEdit"
+                v-on:click="editRecord" >Guardar cambios</button>
             </div>
         </div>
     </div>
@@ -43,13 +44,24 @@ export default defineComponent({
     return {
       registro: new Employee(),
       isEdit: false,
+      idedit: String,
     };
   },
   created() {
     this.isEditComponent(this.$route.query.id);
   },
   methods: {
+    checkForm() {
+      if (this.registro.userId.trim() === '' || this.registro.userNme.trim() === '' || this.registro.date === '') {
+        window.alert('Datos incompletos.');
+        return false;
+      }
+      return true;
+    },
     saveRecord() {
+      if (!this.checkForm()) {
+        return;
+      }
       fetch(`${UtileriasCls.myAppUrl()}apimain/`, {
         method: 'POST',
         body: JSON.stringify([this.registro]),
@@ -59,34 +71,54 @@ export default defineComponent({
         },
       }).then((e) => {
         this.registro = new Employee();
-        console.log(e);
-        alert(`${UtileriasCls.myAppUrl()}apimain`);
+        window.alert('Registro guardado con exito.');
       }).catch(() => {
         //  Show status file in front user
         alert('Error en el server');
       });
     },
+    editRecord() {
+      if (!this.checkForm()) {
+        return;
+      }
+      fetch(`${UtileriasCls.myAppUrl()}apimain/${this.idedit}`, {
+        method: 'PUT',
+        body: JSON.stringify([this.registro]),
+        headers: {
+          Accept: 'application/json',
+          'Content-type': 'application/json',
+        },
+      }).then(() => {
+        this.registro = new Employee();
+        this.isEdit = false;
+        window.alert('Registro actualizado con exito.');
+      }).catch(() => {
+        window.alert('Server no disponible.');
+      });
+    },
     isEditComponent(id:any) {
       if (id !== null && id !== undefined) {
         this.isEdit = true;
+        this.idedit = id;
         fetch(`${UtileriasCls.myAppUrl()}apimain/GetTurno/${id}`, {
           mode: 'cors',
           headers: {
             'Access-Control-Allow-Origin': '*',
           },
         }).then((res) => res.json()).then((data) => {
-          const demo = data as Employee;
-          //    demo.date = (demo.date as Date).toString().substring(0, 10);
-          //    console.log(demo.date);
-          this.registro = demo;
+          const recordLocal = data as Employee;
+          recordLocal.date = (recordLocal.date as Date).toString().substring(0, 10);
+          const ddd = new Date(recordLocal.PunchIn).toISOString().split('T')[1].substring(0, 5);
+          recordLocal.PunchIn = ddd.split(':')[0].length < 2 ? `0${ddd}` : ddd;
+          const timeAux = new Date(recordLocal.PunchOut).toISOString().split('T')[1].substring(0, 5);
+          recordLocal.PunchOut = timeAux.split(':')[0].length < 2 ? `0${timeAux}` : timeAux;
+          this.registro = recordLocal;
         }).catch((res) => {
+          console.log(res);
           window.alert('Servidor no disponible');
         });
       }
     },
-  },
-  components: {
-
   },
 });
 </script>
