@@ -56,6 +56,16 @@
     height: 100%;
     background-color: white;
     width: 450px;
+    transform: translate(100%);
+    animation-iteration-count: 1;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-name: enter-to-right;
+    }
+    @keyframes enter-to-right {
+    to {
+      transform: translate(0);
+    }
     }
   .subTitle{
     text-align: left;
